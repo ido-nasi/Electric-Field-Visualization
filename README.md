@@ -21,7 +21,7 @@ py -3.10 -mpipwin install numpy
  The installation process will be much shorter and easier in python <= 3.8.
  
 ## Scientific explanation 
-With matplotlib the implementation is quite staright forward. We generate randomly a couple of chargers on the grid based on the system arg. Then, we can calculate the field - create several matrixes using numpy to represent the Electric Field on every point on the grid, and calculate it using a function. Now we can pass the matrixes with the field's values to matplotlib and get the graph with the charges and field lines.
+With matplotlib the implementation is quite staright forward. We generate randomly a couple of chargers on the grid based on the system args. Then, we can calculate the field - create several matrixes using numpy to represent the Electric Field on every point on the grid, and calculate it using a function. Now we can pass the matrixes with the field's values to matplotlib and get the graph with the charges and field lines.
 
 
 **For E_y:**
