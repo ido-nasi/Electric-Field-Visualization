@@ -44,10 +44,13 @@ python3 matplotlib_implementation.py <ARGS>
 ```
 Or via the `.exe` file:
 ```bash
-.\matplotlib_implementation.exe <ARGS>
+.\dist\matplotlib_implementation.exe <ARGS>
 ```
 
 ### Example run:
+```bash
+.\matplotlib_implementation.exe -c 3 -r "False"
+```
 <p align="center">
   <img src="https://user-images.githubusercontent.com/101902014/206561069-f9c47ede-5634-41a2-ac04-239c345dbf4f.png" alt=""/>
 </p>
