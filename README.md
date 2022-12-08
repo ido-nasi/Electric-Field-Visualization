@@ -49,7 +49,7 @@ Or via the `.exe` file:
 
 ### Example run:
 ```bash
-.\matplotlib_implementation.exe -c 3 -r "False"
+.\matplotlib_implementation.exe -c 2
 ```
 <p align="center">
   <img src="https://user-images.githubusercontent.com/101902014/206561069-f9c47ede-5634-41a2-ac04-239c345dbf4f.png" alt=""/>
