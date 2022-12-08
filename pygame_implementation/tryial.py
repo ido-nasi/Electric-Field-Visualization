@@ -1,9 +1,10 @@
+import math
+
 import pygame
 import numpy as np
 
-
-WIDTH = 1000
-ROWS = 30
+WIDTH = 600
+ROWS = 5
 WIN = pygame.display.set_mode((WIDTH, WIDTH))
 pygame.display.set_caption("Electric Field Emulator")
 
@@ -36,7 +37,7 @@ class Spot:
         # physics properties
         self.q = 0
         self.charged = False
-        self.arrow = ((self.x + self.padding, self.y + 0.3 * self.width),
+        self.arrow_points = ((self.x + self.padding, self.y + 0.3 * self.width),
                       (self.x + self.width * 0.5, self.y + 0.3 * self.width),
                       (self.x + self.width * 0.5, self.y + self.padding),
                       (self.x + self.width - self.padding, self.y + 0.5 * self.width),
@@ -70,10 +71,31 @@ class Spot:
             pygame.draw.circle(win, RED, (self.x + self.width // 2, self.y + self.width // 2),
                                self.width // 2 - self.padding)
         else:
-            pygame.draw.polygon(win, (0, 0, 0), self.arrow)
+            pygame.draw.polygon(win, (0, 0, 0), self.arrow_points)
+
+    def update_field(self, win, charges):
+        Ex, Ey = 0, 0
+        for charger in charges:
+            ex, ey = E(charger.q, (charger.x + charger.width // 2, charger.y + charger.width // 2),
+                       self.x + self.width // 2, self.y + self.width // 2)
+            Ex += ex
+            Ey += ey
+
+        try:
+            angle = math.degrees(math.cos(Ey/Ex))
+        except ValueError:
+            angle = 0
+        except ZeroDivisionError:
+            angle = 0
+        print(f"{self.row = }, {self.col = }, {angle = }")
+
+        new = []
+        for i in range(0, len(self.arrow_points)):
+            new.append(rotatePoint((self.x + self.width // 2, self.y + self.width // 2), self.arrow_points[i], angle))
+        self.arrow_points = new
 
     def __repr__(self):
-        return f"Spot[{self.x = }, {self.y = }, {self.width = }, {self.arrow = }]"
+        return f"Spot[{self.x = }, {self.y = }, {self.width = }, {self.arrow_points = }]"
 
 
 def make_grid(rows, width):
@@ -126,6 +148,32 @@ def E(q, coordinates: list, x, y):
     return q * (x - coordinates[0]) / r_3, q * (y - coordinates[1]) / r_3
 
 
+def get_charges(grid):
+    c = []
+
+    for row in grid:
+        for spot in row:
+            if spot.is_charged():
+                c.append(spot)
+
+    return c
+
+
+def update_field(win, grid, charges):
+    for row in grid:
+        for spot in row:
+            spot.update_field(win, charges)
+
+
+def rotatePoint(centerPoint,point,angle):
+    """Rotates a point around another centerPoint. Angle is in degrees.
+    Rotation is counter-clockwise"""
+    angle = math.radians(angle)
+    temp_point = point[0]-centerPoint[0] , point[1]-centerPoint[1]
+    temp_point = ( temp_point[0]*math.cos(angle)-temp_point[1]*math.sin(angle) , temp_point[0]*math.sin(angle)+temp_point[1]*math.cos(angle))
+    temp_point = temp_point[0]+centerPoint[0] , temp_point[1]+centerPoint[1]
+    return temp_point
+
 def main():
     grid = make_grid(ROWS, WIDTH)
 
@@ -155,7 +203,10 @@ def main():
                 pass
 
             if event.type == pygame.KEYDOWN:
-                pass
+
+                if event.key == pygame.K_SPACE:
+                    current_charges = get_charges(grid)
+                    update_field(WIN, grid, current_charges)
 
                 if event.key == pygame.K_c:
                     start = None
