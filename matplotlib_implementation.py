@@ -40,6 +40,7 @@ if __name__ == "__main__":
 
     # Create a multiple with nq charges of alternating sign, equally spaced
     # on the unit circle.
+
     nq = 2 ** int(sys.argv[1])
     charges = []
 
@@ -65,7 +66,7 @@ if __name__ == "__main__":
     ax.streamplot(x, y, Ex, Ey, color=color, linewidth=1, cmap=plt.cm.inferno,
                   density=2, arrowstyle='->', arrowsize=1.5)
 
-    # Add filled circles for the charges themselves
+    # Add filled circles for the charges themselves: red for positive and blue for negative
     charge_colors = {True: '#aa0000', False: '#0000aa'}
     for q, pos in charges:
         ax.add_artist(Circle(pos, 0.05, color=charge_colors[q > 0]))
