@@ -24,12 +24,11 @@ py -3.10 -mpipwin install numpy
 With matplotlib the implementation is quite staright forward. We generate randomly a couple of chargers on the grid based on the system arg. Then, we can calculate the field - create several matrixes using numpy to represent the Electric Field on every point on the grid, and calculate it using a function. Now we can pass the matrixes with the field's values to matplotlib and get the graph with the charges and field lines.
 
 
-For E_y:
-<p>
+**For E_y:**
 $$\large E_y = \frac{q * K * sin(a)}{r^2}\ $$ $$\Large -->$$  
 $$\large E_y = \frac{q * K * dy/r}{r^2}\ $$ $$\Large -->$$
 $$\large E_y = \frac{q * K * dy}{r^3}\ $$ 
-</p>
+
 <p>
 We can ignore K because we try to find the sum of all fields that are a multiply of K and the ratio will remain the same.
 Final Formula for Ey: 
