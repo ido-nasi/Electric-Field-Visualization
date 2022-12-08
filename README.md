@@ -25,13 +25,13 @@ With matplotlib the implementation is quite staright forward. We generate random
 
 
 For E_y:
-$$ q * K * sin(a) / r ** 2  -->
-  q * K * dy/r / r  ** 2   -->
-    q * K * dy / r ** 3 $$ 
+$$\Large \frac{q * K * sin(a)}{r^2}\ $$ -->  
+$$\Large \frac{q * K * dy/r}{r^2}\ $$ -->
+$$\Large \frac{q * K * dy}{r^3}\ $$ 
 We can ignore K because we try to find the sum of all fields that are a multiply of K and the ratio will remain the same.
 Final Formula: 
 
-$$ E_y = \frac{q * dy}{r^3}\, $$ 
+$$\Large E_y = \frac{q * dy}{r^3}\ $$ 
 
 
 # Usage
