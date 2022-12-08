@@ -25,14 +25,15 @@ With matplotlib the implementation is quite staright forward. We generate random
 
 
 **For E_y:**
-$$\large E_y = \frac{q * K * sin(a)}{r^2}\ $$ $$\Large -->$$  
-$$\large E_y = \frac{q * K * dy/r}{r^2}\ $$ $$\Large -->$$
+$$\large E_y = \frac{q * K * sin(a)}{r^2}\ $$  
+$$\large E_y = \frac{q * K * dy/r}{r^2}\ $$ 
 $$\large E_y = \frac{q * K * dy}{r^3}\ $$ 
 
 <p>
 We can ignore K because we try to find the sum of all fields that are a multiply of K and the ratio will remain the same.
-Final Formula for Ey: 
+Final Formula for Ey (The same goes for Ex): 
 </p>
+
 $$\Large E_y = \frac{q * dy}{r^3}\ $$ 
 
 
@@ -43,7 +44,8 @@ python3 matplotlib_implementation.py <ARGS>
 ```
 
 ### Example run:
-![image](https://user-images.githubusercontent.com/101902014/206561069-f9c47ede-5634-41a2-ac04-239c345dbf4f.png)
-
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/101902014/206561069-f9c47ede-5634-41a2-ac04-239c345dbf4f.png" alt=""/>
+</p>
 
 # Pygame Implementation
