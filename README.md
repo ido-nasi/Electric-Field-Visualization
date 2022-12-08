@@ -20,6 +20,8 @@ We can ignore K because we try to find the sum of all fields that are a multiply
 Final Formula: q * dy / r ** 3 
 
 ```bash
+python -m venv venv
+
 py -3.10 -mpip install pipwin
 py -3.10 -mpipwin refresh
 py -3.10 -mpipwin install numpy
