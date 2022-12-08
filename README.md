@@ -31,7 +31,7 @@ $$ q * K * sin(a) / r ** 2  -->
 We can ignore K because we try to find the sum of all fields that are a multiply of K and the ratio will remain the same.
 Final Formula: 
 
-$$ q * dy / r ** 3 $$ 
+$$ E_y = \frac{q * dy}{r^3}\, $$ 
 
 
 # Usage
