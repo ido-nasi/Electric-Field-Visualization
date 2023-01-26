@@ -1,20 +1,16 @@
 import random
-import sys
+import argparse
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.patches import Circle
 
+parser = argparse.ArgumentParser()
+parser.add_argument("-c", "--charges", required=True, help="Number of charges to be displayed")
+parser.add_argument("-r", "--random", default="True", help="Random distribution of charges. True for random False for symmetric")
+args = parser.parse_args()
+
 
 def E(q, coordinates: list, x, y):
-    # For Ey:
-    # q * K * sin(a) / r ** 2  -->
-    # q * K * dy/r / r  ** 2   -->
-    # q * K * dy / r ** 3      -->
-    # We can ignore K because we try to find the sum of all fields that are a multiply of K and the ratio will remain the same.
-    # Final Formula: q * dy / r ** 3
-
-    # Calculation for Ex is the same but with dy instead of dx.]
-
     """Calculate electric field
 
         Args:
@@ -41,13 +37,15 @@ if __name__ == "__main__":
     # Create a multiple with nq charges of alternating sign, equally spaced
     # on the unit circle.
 
-    nq = 2 ** int(sys.argv[1])
+    nq = 2 ** int(args.charges)
     charges = []
 
-    for i in range(nq):
+    for i in range(int(args.charges)):
         q = i % 2 * 2 - 1
-        # charges.append((q, (np.cos(2 * np.pi * i / nq), np.sin(2 * np.pi * i / nq))))
-        charges.append((q, (random.choice(x), random.choice(y))))
+        if args.random == "True":
+            charges.append((q, (random.choice(x), random.choice(y))))
+        else:
+            charges.append((q, (np.cos(2 * np.pi * i / nq), np.sin(2 * np.pi * i / nq))))
 
     # Electric field vector, E=(Ex, Ey), as separate components
     Ex, Ey = np.zeros((ny, nx)), np.zeros((ny, nx))
