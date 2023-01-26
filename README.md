@@ -1,9 +1,7 @@
 # Electric-Field-Visualization
 > This project was made for Shwartz-Raisman Institute of Technology competition.
 
-The project aim is to visualize Electric field lines with python. There are two main possible implementations:
-- Matplotlib
-- Pygame
+The project's aim is to visualize Electric field lines with python.
 
 # Matplotlib Implementation
 
@@ -55,6 +53,3 @@ Or via the `.exe` file:
   <img src="https://user-images.githubusercontent.com/101902014/206561069-f9c47ede-5634-41a2-ac04-239c345dbf4f.png" alt=""/>
 </p>
 
-
-
-# Pygame Implementation
