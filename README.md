@@ -1,7 +1,6 @@
 # Electric-Field-Visualization
 > This project was made for Shwartz-Raisman Institute of Technology competition.
-
-The project's aim is to visualize Electric field lines with python.
+> The project's aim is to visualize Electric field lines with python.
 
 # Matplotlib Implementation
 
