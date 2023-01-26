@@ -14,6 +14,7 @@ def E(q, coordinates: list, x, y):
     """Calculate electric field
 
         Args:
+
             q (float): the electric charge
             coordinates (list[float, float]): list of [x,y] coordinates of the charger
             x (float): x coordinate of the current point
